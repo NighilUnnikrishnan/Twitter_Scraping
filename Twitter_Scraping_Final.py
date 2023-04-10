@@ -61,13 +61,7 @@ def Streamlit_interface():
                           ('None','Display data','Display and upload to Mongodb'),0)
     global scrapekeys
     scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
-    global State
-    State = st.selectbox('''Choose the action to be performed: 
-                         (Keep :red['None'] to avoid unwanted execution)''',
-                          ('None','Display data','Display and upload to Mongodb'),0)
-    global scrapekeys
-    scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
-        
+            
 def init_connection():
     username_secret=st.secrets.mongo_username
     password_secret=st.secrets.mongo_password
