@@ -31,7 +31,7 @@ def Streamlit_interface():
     st.title('**Twitter Scraping**')
     global Twitterhandle
     Twitterhandle=st.text_input('''Enter :blue[**Twitter handle**] name 
-                                or :red[**hashtag**]''',"",
+                                or :red[**hashtag**]:''',"",
                                 placeholder='Eg: @elonmusk → elonmusk')
     if Twitterhandle!="":
         pass
