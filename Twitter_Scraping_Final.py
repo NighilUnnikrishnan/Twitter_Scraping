@@ -55,14 +55,15 @@ def Streamlit_interface():
     else:
         st.write(':red[*Field cannot be empty*]')
         
-#def init_connection():
-#    username=urllib.parse.quote_plus(st.secrets.mongo_username)
- #   password=urllib.parse.quote_plus(st.secrets.mongo_password)
- #   return MongoClient("mongodb+srv://"+username+":"+password+"@st.secrets.cluster_name.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
 def init_connection():
-    username=urllib.parse.quote_plus('nighil_unnikrishnan')
-    password=urllib.parse.quote_plus('Rasenmongoatlas@94')
-    return MongoClient("mongodb+srv://"+username+":"+password+"@cluster0.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
+    username=urllib.parse.quote_plus(st.secrets.mongo_username)
+    password=urllib.parse.quote_plus(st.secrets.mongo_password)
+    return MongoClient("mongodb+srv://"+username+":"+password+"@st.secrets.cluster_name.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
+
+#def init_connection():
+    #username=urllib.parse.quote_plus('nighil_unnikrishnan')
+    #password=urllib.parse.quote_plus('Rasenmongoatlas@94')
+    #return MongoClient("mongodb+srv://"+username+":"+password+"@cluster0.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
 
 def Store_to_mongodb():
     client = init_connection()
