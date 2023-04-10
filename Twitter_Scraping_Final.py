@@ -2,7 +2,8 @@ import snscrape.modules.twitter as snt
 import pandas as pd
 from pymongo import MongoClient
 import streamlit as st
-from datetime import datetime as dt, timedelta as td
+import datetime as dt
+from datetime import timedelta as td
 import json
 import urllib.parse
 
