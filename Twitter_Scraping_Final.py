@@ -55,9 +55,14 @@ def Streamlit_interface():
     else:
         st.write(':red[*Field cannot be empty*]')
         
+#def init_connection():
+   # username=urllib.parse.quote_plus(st.secrets.mongo_username)
+    #password=urllib.parse.quote_plus(st.secrets.mongo_password)
+    #return MongoClient("mongodb+srv://"+username+":"+password+"@st.secrets.cluster_name.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
+
 def init_connection():
-    username=urllib.parse.quote_plus(st.secrets.mongo_username)
-    password=urllib.parse.quote_plus(st.secrets.mongo_password)
+    username=st.secrets.mongo_username
+    password=st.secrets.mongo_password
     return MongoClient("mongodb+srv://"+username+":"+password+"@st.secrets.cluster_name.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
 
 #def init_connection():
