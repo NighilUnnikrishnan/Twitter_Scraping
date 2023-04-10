@@ -2,7 +2,7 @@ import snscrape.modules.twitter as snt
 import pandas as pd
 from pymongo import MongoClient
 import streamlit as st
-import datetime as dt
+from datetime import datetime as dt, timedelta as td
 import json
 import urllib.parse
 
@@ -44,7 +44,7 @@ def Streamlit_interface():
     global Enddate
     Enddate=st.date_input('Enter Ending date',dt.date.today(),
                           min_value=Startdate,
-                          max_value=dt.date.today())
+                          max_value=dt.date.today()+td(1)
     st.write('Note: Ending date is not inclusive. So, select 1 day further'
              ' to have :red[today] included.')
     global Tweet_limit
