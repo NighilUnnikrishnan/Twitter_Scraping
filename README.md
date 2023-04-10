@@ -10,6 +10,7 @@ Read more about snscrape here https://github.com/JustAnotherArchivist/snscrape.g
 
 Read more about streamlit here https://docs.streamlit.io/
 
+
 **Requirements**
 snscrape module (requires pythong 3.8 or higher)
 pandas library
@@ -17,6 +18,7 @@ pymongo module
 streamlit module
 datetime module
 urllib.parse module
+
 
 **Project Description:**
 
@@ -26,4 +28,26 @@ _['Datetime','Tweet Id','Tweet URL','Tweet Content','User Name','Reply Count','R
 
 The entire code has been written using python and the input is taken directly from the deployed streamlit app, where the user will provide the necessary input data. After execution of the code, the output (scraped data) is displayed as a pandas dataframe and the user has the option to upload the data to a Mongodb cloud server or download in .json and .csv formats.
 
-Code 
+
+**Code Description:**
+
+The python code has 5 functional blocks viz, (_'Scrapetweets()','Streamlit_interface()','init_connection(),'Store_to_mongodb()' and 'Execution()'_) as explained below.
+
+  1. Function 'Scrapetweets()': This function block contains the code for scraping the tweets. The function execution requires the **user inputs**,
+**'Twitterhandle' or 'hashtag'** name for keyword search, **'Starting and Ending Dates'**(taken as separate inputs) for date range to search, and **'Tweet limit'** to limit the number of tweets to be scraped (between 1 and 1,000). The function is **called under the 'Execution()' block.**
+
+  2. Function 'Streamlit_interface()': The code for the Streamlit GUI or webapp is written in this functional block. This function **takes multiple inputs** **from** the **streamlit app** as variables **and passes it onto the 'Scrapetweets()' function** as a single variable. This is the **first function called in the code** and is not part of any functional blocks.
+
+  3. Function 'init_connection()': The code block contains the code to connect to Mongodb cloud servers. The connection to the cloud server is established by passing the login credentials as variables, from the **Web App's Secrets** folder to the code block. This function is **called under the 'Store_to_mongodb()' block.**
+
+  4. Function 'Store_to_mongodb()': This block contains the code for storing the displayed dataframe data to mongodb database. The scraped data is stored as **documents** having the **keys ('Scrapped_Name', 'Scrapped_Date', 'Scraped_Data')** under a designated collection in a designated database. The function is **called in the 'Execution()' block** by user action in the streamlit web app. 
+  
+  5. Function 'Execution()': This function block contains the entire code for **initiating the scraping**, **displaying** the data in a **dataframe**, **uploading or downloading** the scraped data. This function is called outside other function blocks.
+
+
+**Execution Flow**
+  1. The 'Streamlit_interface()' function is called when the app is deployed. 
+  2. The user provides the necessary input directly in the streamlit app.
+  3. The user input data is converted and stored as the 'scrapekeys' global variable.
+  4. The 'Execution()' function is called next, which in turn calls the execution of the 'Scrapetweets()' function and if required the '
+  5. The user gives in the necessary input
