@@ -32,7 +32,7 @@ def Streamlit_interface():
     global Twitterhandle
     Twitterhandle=st.text_input('''Enter :blue[**Twitter handle**] name 
                                 or :red[**hashtag**]:''',"",
-                                placeholder='Eg: @elonmusk → elonmusk')
+                                placeholder='Eg: @elonmusk or #fitness')
     if Twitterhandle!="":
         pass
     else:
