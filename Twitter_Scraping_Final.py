@@ -58,9 +58,10 @@ def Streamlit_interface():
 def init_connection():
     username_secret=st.secrets.mongo_username
     password_secret=st.secrets.mongo_password
+    cluster_name=st.secrets.cluster_name
     username=urllib.parse.quote_plus(username_secret)
     password=urllib.parse.quote_plus(password_secret)
-    return MongoClient("mongodb+srv://"+username+":"+password+"@st.secrets.cluster_name.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
+    return MongoClient("mongodb+srv://"+username+":"+password+"@"+cluster_name+".gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
 
 #def init_connection():
     #username=urllib.parse.quote_plus('nighil_unnikrishnan')
