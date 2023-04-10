@@ -9,3 +9,8 @@ Read more about snscrape here https://github.com/JustAnotherArchivist/snscrape.g
 **streamlit -** It turns data scripts into shareable web apps using pythong without having the need to learn front-end development.
 
 Read more about streamlit here https://docs.streamlit.io/
+
+**Project Description:**
+
+In this project, we will be scraping data from twitter based on twitter handle name. We will scrape the following data.
+'Datetime','Tweet Id','Tweet URL', 'Tweet Content','User Name','Reply Count','Retweet Count','Tweet Language','Source', 'Like Count'
