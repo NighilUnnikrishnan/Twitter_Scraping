@@ -64,11 +64,6 @@ def init_connection():
     password=urllib.parse.quote_plus(password_secret)
     return MongoClient("mongodb+srv://"+username+":"+password+"@"+cluster_name+".gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
 
-#def init_connection():
-    #username=urllib.parse.quote_plus('nighil_unnikrishnan')
-    #password=urllib.parse.quote_plus('Rasenmongoatlas@94')
-    #return MongoClient("mongodb+srv://"+username+":"+password+"@cluster0.gw5r3mj.mongodb.net/?retryWrites=true&w=majority")
-
 def Store_to_mongodb():
     client = init_connection()
     db = client['Test_database']
