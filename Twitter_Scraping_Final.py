@@ -54,7 +54,7 @@ def Streamlit_interface():
     if Tweet_limit!="":
         pass
     else:
-        st.write(':red[*Field cannot be empty*])
+        st.write(':red[*Field cannot be empty*]')
     global State
     State = st.selectbox('''Choose the action to be performed: 
                          (Keep :red['None'] to avoid unwanted execution)''',
