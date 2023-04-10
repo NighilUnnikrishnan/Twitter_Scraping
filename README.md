@@ -11,14 +11,12 @@ Read more about snscrape here https://github.com/JustAnotherArchivist/snscrape.g
 Read more about streamlit here https://docs.streamlit.io/
 
 **Requirements**
-snscrape.modules.twitter as snt
-pandas
-pymongo
-streamlit
-import datetime as dt
-from datetime import timedelta as td
-import json
-import urllib.parse
+snscrape module (requires pythong 3.8 or higher)
+pandas library
+pymongo module
+streamlit module
+datetime module
+urllib.parse module
 
 **Project Description:**
 
@@ -26,4 +24,6 @@ In this project, we will be scraping data from twitter based on twitter handle n
 
 _['Datetime','Tweet Id','Tweet URL','Tweet Content','User Name','Reply Count','Retweet Count','Tweet Language','Source', 'Like Count']_
 
-The entire code has been written using python 
+The entire code has been written using python and the input is taken directly from the deployed streamlit app, where the user will provide the necessary input data. After execution of the code, the output (scraped data) is displayed as a pandas dataframe and the user has the option to upload the data to a Mongodb cloud server or download in .json and .csv formats.
+
+Code 
