@@ -46,8 +46,15 @@ The python code has 5 functional blocks viz, (_'Scrapetweets()','Streamlit_inter
 
 
 **Execution Flow**
-  1. The 'Streamlit_interface()' function is called when the app is deployed. 
-  2. The user provides the necessary input directly in the streamlit app.
-  3. The user input data is converted and stored as the 'scrapekeys' global variable.
-  4. The 'Execution()' function is called next, which in turn calls the execution of the 'Scrapetweets()' function and if required the '
-  5. The user gives in the necessary input
+  1. The **'Streamlit_interface()'** function is **called when the app is deployed**, followed by the 'Execution()' function. 
+  2. The **user provides** the necessary **input** directly in the **streamlit app**.
+  3. The user **input data** is converted and **stored** as the **'scrapekeys' global variable**.
+  4. The 'scrapekeys' **variable is passed** to the **'Scrapetweets()'** function which is called by the 'Execution()' block.
+  5. **Based on the user's input**, the 'Execution()' function runs the code to **either display the data** alone or to **display and upload to mongodb**. Running **either options** will provide the **option to download the data** in the required format.
+
+
+**To note:**
+Streamlit doesn't allow looping of 'st.button()' to execute one command after another based on consecutive inputs. This created an issue where the data couldn't be displayed first and then uploaded, as the 'st.button('upload')' for uploading couldn't be embedded inside the 'st.button('display')' for displaying data. To overcome this, 'st.selectbog()' is used. Using this input widget, three different session states are generated and the user is given the option to either display the data alone or display and upload. But, after each execution, it is advised to keep the widget in 'None' state to avoid unwanted execution.
+        ![image](https://user-images.githubusercontent.com/130289201/231006884-ca7b23f0-e6a8-4459-87d0-793e5a897d44.png)
+
+
