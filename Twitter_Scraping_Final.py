@@ -54,7 +54,18 @@ def Streamlit_interface():
     if Tweet_limit!="":
         pass
     else:
-        st.write(':red[*Field cannot be empty*]')
+        st.write(':red[*Field cannot be empty*global State
+    State = st.selectbox('''Choose the action to be performed: 
+                         (Keep :red['None'] to avoid unwanted execution)''',
+                          ('None','Display data','Display and upload to Mongodb'),0)
+    global scrapekeys
+    scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
+    global State
+    State = st.selectbox('''Choose the action to be performed: 
+                         (Keep :red['None'] to avoid unwanted execution)''',
+                          ('None','Display data','Display and upload to Mongodb'),0)
+    global scrapekeys
+    scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
         
 def init_connection():
     username_secret=st.secrets.mongo_username
@@ -74,48 +85,43 @@ def Store_to_mongodb():
     mycol.insert_one(mydoc)
     st.write('Upload Succesful!')
         
+def Execution():
+    if State=='None':
+        pass
+    elif State=="Display data":
+        if Twitterhandle=="":
+            st.write('*:red[Please enter Twitterhandle name]*')
+        else:
+            Scrapetweets()
+            st.dataframe(Tweets_df)
+            st.cache_data
+            st.download_button('Download as .json file',
+                    Tweets_df.to_json(),Twitterhandle+'\'s Tweets.json',
+                    mime='json'
+                    )
+            st.download_button('Download as .csv',
+                    Tweets_df.to_csv(),Twitterhandle+'\'s Tweets.csv',
+                    mime='csv'
+                    )
+    else:
+        if Twitterhandle=="":
+            st.write('*:red[Please enter Twitterhandle name]*')
+        else:
+            Scrapetweets()
+            st.dataframe(Tweets_df)
+            st.cache_data
+            Store_to_mongodb()
+            st.download_button('Download as .json file',
+                    Tweets_df.to_json(),Twitterhandle+'\'s Tweets.json',
+                    mime='json'
+                    )
+            st.download_button('Download as .csv',
+                    Tweets_df.to_csv(),Twitterhandle+'\'s Tweets.csv',
+                    mime='csv'
+                    )
+
 Streamlit_interface()
-
-State = st.selectbox('''Choose the action to be performed: 
-                     (Keep :red['None'] to avoid unwanted execution)''',
-                      ('None','Display data','Display and upload to Mongodb'),0)
-if State=='None':
-    pass
-elif State=="Display data":
-    if Twitterhandle=="":
-        st.write('*:red[Please enter Twitterhandle name]*')
-    else:
-        scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
-        Scrapetweets()
-        st.dataframe(Tweets_df)
-        st.cache_data
-        st.download_button('Download as .json file',
-                Tweets_df.to_json(),Twitterhandle+'\'s Tweets.json',
-                mime='json'
-                )
-        st.download_button('Download as .csv',
-                Tweets_df.to_csv(),Twitterhandle+'\'s Tweets.csv',
-                mime='csv'
-                )
-else:
-    if Twitterhandle=="":
-        st.write('*:red[Please enter Twitterhandle name]*')
-    else:
-        scrapekeys='from:'+Twitterhandle+" since:"+str(Startdate)+" until:"+str(Enddate)
-        Scrapetweets()
-        st.dataframe(Tweets_df)
-        st.cache_data
-        Store_to_mongodb()
-        st.download_button('Download as .json file',
-                Tweets_df.to_json(),Twitterhandle+'\'s Tweets.json',
-                mime='json'
-                )
-        st.download_button('Download as .csv',
-                Tweets_df.to_csv(),Twitterhandle+'\'s Tweets.csv',
-                mime='csv'
-                )
-
-
+Execution()
 
 
 
