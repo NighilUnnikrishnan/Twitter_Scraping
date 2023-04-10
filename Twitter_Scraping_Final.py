@@ -46,7 +46,7 @@ def Streamlit_interface():
                           min_value=Startdate,
                           max_value=dt.date.today())
     st.write('Note: Ending date is not inclusive. So, select 1 day further'
-             ' to have the previous date included.')
+             ' to have :red[today] included.')
     global Tweet_limit
     Tweet_limit=int(st.number_input('Enter a number :red[between 1 and 1,000]'
                                     ,min_value=1,max_value=1000))
